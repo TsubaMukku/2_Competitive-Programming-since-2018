@@ -101,3 +101,58 @@ public:
         else return quotient;
     }
 };
+
+
+/*
+    solution3: Adding Powers of Two
+*/
+
+class Solution {
+private: 
+    int HALF_INT_MIN = -1073741824;
+public:
+    int divide(int dividend, int divisor) {
+        
+        // corner case:
+        if (dividend == INT_MIN && divisor == -1) return INT_MAX;
+        
+        int neg = 2;
+        if (dividend > 0){
+            neg--;
+            dividend = -dividend;
+        }
+        
+        if (divisor > 0){
+            neg--;
+            divisor = -divisor;
+        }
+        
+        vector<int> doubles;
+        vector<int> powers_of_two;
+        
+        int index = -1;
+        
+        while (divisor >= dividend){
+            
+            doubles.emplace_back(divisor);
+            powers_of_two.emplace_back(index);
+            
+            if (divisor < HALF_INT_MIN) break;
+            
+            divisor += divisor;
+            index += index;
+        }
+        
+        int q = 0;
+        
+        for (int i = (int)doubles.size()-1; i >= 0; i--){
+            if (doubles[i] >= dividend){
+                q += powers_of_two[i];
+                dividend -= doubles[i];
+            }
+        }
+        
+        if (neg != 1) return -q;
+        else return q;
+    }
+};
