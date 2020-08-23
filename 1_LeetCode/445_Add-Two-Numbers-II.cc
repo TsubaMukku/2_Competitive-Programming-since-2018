@@ -74,3 +74,80 @@ public:
         return ans;
     }
 };
+
+
+/*
+  solution 2: reverse lists -> push into stacks -> pop each element -> 今度はstack空になるまで
+  順番に取り出せば良い -> 取り出すたびにLinkedListを伸ばしていく.
+  
+  time complexity: O(n + m)
+  space complexity: O(n + m)
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        stack<ListNode*> s1;
+        stack<ListNode*> s2;
+        stack<ListNode*> s3;
+        
+        while (l1 != nullptr){
+            s1.push(l1);
+            l1 = l1->next;
+        }
+        
+        while (l2 != nullptr){
+            s2.push(l2);
+            l2 = l2->next;
+        }
+        
+        int carry = 0;
+        int val1, val2;
+        
+        while (!s1.empty() || !s2.empty()){
+            
+            if (s1.empty()) val1 = 0;
+            else{
+                val1 = s1.top()->val;
+                s1.pop();
+            }
+            
+            if (s2.empty()) val2 = 0;
+            else{
+                val2 = s2.top()->val;
+                s2.pop();
+            }
+            
+            int val = val1 + val2 + carry;
+            
+            ListNode* node = new ListNode(val % 10);
+            carry = val / 10;
+            s3.push(node);
+        }
+        
+        if (carry > 0) s3.push(new ListNode(carry));
+        
+        ListNode* dummy = new ListNode(0);
+        
+        ListNode *node = dummy;
+        
+        while (!s3.empty()){
+            node->next = s3.top();
+            s3.pop();
+            node = node->next;
+        }
+        
+        return dummy->next;
+    }
+};
+
