@@ -13,8 +13,8 @@ public:
             pair<int,int> p4(rectangle[2],rectangle[1]);
             
             for ( auto &p : {p1,p2,p3,p4} ){
-                const auto& ret = corners.insert(p);
-                if (!ret.second) corners.erase(ret.first);
+                const auto& ret = corners.insert(p); // ?????
+                if (!ret.second) corners.erase(ret.first); // ?????
             }
             
             area += (p2.first - p1.first) * (p2.second - p1.second);
