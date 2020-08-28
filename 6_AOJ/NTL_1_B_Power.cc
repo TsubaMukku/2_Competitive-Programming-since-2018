@@ -31,3 +31,32 @@ int main(){
     int ans = ModPow(m,n,mod);
     cout << ans << endl;
 }
+
+/*
+  recursive version:
+*/
+
+#include <iostream>
+
+using namespace std;
+const int mod = 1e9+7;
+
+int ModPow(long long m, long long n){
+    long long res = 1;
+    
+    if (n > 0){
+        res = ModPow(m,n/2);
+        
+        if (n % 2 ==0) res = (res * res) % mod;
+        else res = ( (res * res) % mod * m ) % mod;
+    }
+    return (int)res;
+}
+
+int main(){
+    long long m, n;
+    cin >> m >> n;
+    
+    cout << ModPow(m,n) << endl;
+    return 0;
+}
