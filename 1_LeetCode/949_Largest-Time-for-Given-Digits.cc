@@ -1,3 +1,52 @@
+/*
+    2020/09/04
+*/
+class Solution {
+public:
+    string largestTimeFromDigits(vector<int>& A) {
+        sort(A.begin(),A.end());
+        string ans = "";
+        int time = 0;
+        do{
+            int hour = A[0] * 10 + A[1];
+            int minute = A[2] * 10 + A[3];
+            
+            if (hour >= 24 || minute >= 60) continue;
+            
+            if (time > hour * 60 + minute) continue;
+            
+            time = hour * 60 + minute;
+            
+            if (hour < 10){
+                ans = "0";
+                ans += to_string(hour);
+                ans += ":"; 
+            }
+            else{
+                ans = to_string(hour);
+                ans += ":";
+            }
+            
+            if (minute < 10){
+                ans += "0";
+                ans += to_string(minute);
+            }
+            else{
+                ans += to_string(minute);
+            }
+            
+            
+        } while (next_permutation(A.begin(),A.end()));
+        
+        return ans;
+    }
+};
+
+
+
+
+
+
 class Solution {
 public:
     string largestTimeFromDigits(vector<int>& A) {
