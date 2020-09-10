@@ -1,3 +1,69 @@
+/*
+    2020-09-11
+*/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+private:
+    void inorderTraversal(TreeNode *root, vector<int> &num){
+        if (root == nullptr) return;
+        
+        if (root->left != nullptr) inorderTraversal(root->left,num);
+        num.emplace_back(root->val);
+        if (root->right != nullptr) inorderTraversal(root->right,num);
+    }
+    
+public:
+    vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
+        vector<int> num1;
+        vector<int> num2;
+        
+        inorderTraversal(root1,num1);
+        inorderTraversal(root2,num2);
+        
+        vector<int> ans;
+        int n1 = (int)num1.size();
+        int n2 = (int)num2.size();
+        
+        int i = 0, j = 0;
+        while (i < n1 && j < n2){
+            if (num1[i] < num2[j]){
+                ans.emplace_back(num1[i]);
+                i++;
+            }
+            else{
+                ans.emplace_back(num2[j]);
+                j++;
+            }
+        }
+        
+        while (i < n1){
+            ans.emplace_back(num1[i]);
+            i++;
+        }
+        while (j < n2){
+            ans.emplace_back(num2[j]);
+            j++;
+        }
+        
+        return ans;
+    }
+};
+
+
+
+
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
