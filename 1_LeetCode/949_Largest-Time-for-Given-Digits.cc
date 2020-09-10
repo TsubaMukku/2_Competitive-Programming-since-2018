@@ -1,4 +1,67 @@
 /*
+    2020-09-11
+    
+*/
+class Solution {
+public:
+    string largestTimeFromDigits(vector<int>& arr) {
+        string ans = "";
+        int largest_time = -1;
+        int largest_hour = -1;
+        int largest_minute = -1;
+        
+        sort(arr.begin(),arr.end());
+        
+        do{
+            int hour = arr[0] * 10 + arr[1];
+            int minute = arr[2] * 10 + arr[3];
+            
+            if (hour >= 24 || minute >= 60) continue;
+            
+            int comp = 60 * hour + minute;
+            
+            if (comp > largest_time){
+                largest_hour = hour;
+                largest_minute = minute;
+                largest_time = comp;
+            }
+            
+        } while (next_permutation(arr.begin(),arr.end()));
+        
+        if (largest_time == -1) return "";
+        
+        if (largest_hour < 10){
+            ans = '0';
+            ans += to_string(largest_hour);
+            ans += ':';
+        }
+        else{
+            ans = to_string(largest_hour);
+            ans += ':';
+        }
+        
+        if (largest_minute < 10){
+            ans += '0';
+            ans += to_string(largest_minute);
+        }
+        else{
+            ans += to_string(largest_minute);
+        }
+        
+        return ans; 
+    }
+};
+
+
+
+
+
+
+
+
+
+
+/*
     2020/09/04
 */
 class Solution {
