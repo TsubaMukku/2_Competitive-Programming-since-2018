@@ -34,3 +34,28 @@ public:
         return res;
     }
 };
+
+
+class Solution {
+public:
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int>> res;
+        
+        // generate all combinations 
+        for (int i = 0; i < (1<<9); i++){
+            vector<int> cur;
+            int sum = 0;
+            
+            // use j if (j-1)th bit is 1
+            for (int j = 1; j <= 9; j++){
+                if ( i & (1<<(j-1)) ) {
+                    sum += j;
+                    cur.emplace_back(j);
+                }
+            }
+            if (sum == n && cur.size() == k) res.emplace_back(cur);
+        }
+        
+        return res;
+    }
+};
