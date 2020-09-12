@@ -1,0 +1,22 @@
+
+/*
+  Kadane algorithm:
+  https://ark4rk.hatenablog.com/entry/2018/01/08/002508
+*/
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int n = (int)nums.size();
+        if (n == 0) return 0;
+        
+        int res = nums[0];
+        int s = nums[0];
+        for (int i = 1; i < n; i++){
+            s = max(nums[i],s + nums[i]);
+            res = max(res,s);
+        }
+        return res;
+        
+    }
+};
