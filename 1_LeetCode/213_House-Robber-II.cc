@@ -1,3 +1,7 @@
+/*
+    cited from https://leetcode.com/problems/house-robber-ii/discuss/59921/9-lines-0ms-O(1)-Space-C%2B%2B-solution
+*/
+
 class Solution {
 private:
     int solve(vector<int> &nums, int l, int r){
