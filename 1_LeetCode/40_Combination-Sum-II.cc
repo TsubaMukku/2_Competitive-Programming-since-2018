@@ -1,4 +1,38 @@
-
+class Solution {
+private:
+    
+    void dfs(const vector<int> &candidates, int target, int start, set<vector<int>> &res, vector<int> &cur){
+        
+        if (target == 0){
+            res.insert(cur);
+            return;
+        }
+        
+        for (int i = start; i < (int)candidates.size(); i++){
+            int num = candidates[i];
+            
+            if (num > target) return;
+            
+            cur.emplace_back(num);
+            
+            dfs(candidates,target-num,i+1,res,cur);
+            cur.pop_back();
+        }
+        return;
+    }
+    
+public:
+    vector<vector<int>> combinationSum2(vector<int>& candidates, int target) {
+        
+        set<vector<int>> res;
+        vector<int> cur;
+        
+        sort(candidates.begin(),candidates.end());
+        
+        dfs(candidates,target,0,res,cur);
+        return vector<vector<int>>(res.begin(),res.end());
+    }
+};
 
 
 
