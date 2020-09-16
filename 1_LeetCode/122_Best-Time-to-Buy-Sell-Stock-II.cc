@@ -1,4 +1,28 @@
 /*
+    2020-09-16 
+    今日の価格が前日の価格よりも大きいならば, 株を買って売れば良い
+*/
+
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int profit = 0;
+        int n = (int)prices.size();
+        
+        for (int i = 0; i +1 < n; i++ ){
+            
+            if (prices[i] < prices[i+1]) profit += (prices[i+1] - prices[i]);
+        }
+
+        return profit;
+    }
+};
+
+
+
+
+
+/*
     *Author: Tsubasa Takamuku
     *Date: 2020/08/09 10:13
 */
