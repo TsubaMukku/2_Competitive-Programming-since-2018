@@ -1,4 +1,33 @@
 /*
+  2020/09/17
+*/
+
+class Solution {
+public:
+    vector<vector<int>> combinationSum3(int k, int n) {
+        vector<vector<int>> res;
+        
+        for (int i = 0; i < (1<<9); i++){
+            
+            vector<int> temp;
+            int temp_sum = 0;
+            
+            for (int j = 0; j < 9; j++){
+                if ( i & (1 << j) ){
+                    temp_sum += (j+1);
+                    temp.emplace_back(j+1);
+                }
+            }
+            
+            if (temp_sum == n && (int)temp.size() == k) res.emplace_back(temp);
+        }
+        
+        return res;
+    }
+};
+
+
+/*
   resource: https://translate.google.com/translate?hl=en&sl=zh-CN&u=https://zxi.mytechroad.com/blog/searching/leetcode-216-combination-sum-iii/&prev=search&pto=aue
 */ 
 
