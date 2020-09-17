@@ -14,3 +14,6 @@ code libraries for LeetCode problems.
 - データ構造とアルゴリズム(CS全般にわたる基本的なコーディングスキル)を体系的に勉強できるから.
 
 
+## Records
+
+https://docs.google.com/spreadsheets/d/1YqN3UxAiSvy2IETcYBA-q7TnZxj23exv-YztUwSc4Y4/edit#gid=0
