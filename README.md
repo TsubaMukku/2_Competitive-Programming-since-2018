@@ -1,3 +1,3 @@
-# 2_Competitive-Programming-since-2018
+# Competitive-Programming
 
 sa
