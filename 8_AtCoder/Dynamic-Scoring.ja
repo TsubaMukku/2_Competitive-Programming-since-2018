@@ -1,0 +1,37 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) throws Exception {
+       Scanner scan = new Scanner(System.in);
+       
+       int n = scan.nextInt();
+       int m = scan.nextInt();
+       int q = scan.nextInt();
+       
+       // 各問題の解けた人数を記録する
+       int[] c = new int[m];
+       
+       // それぞれの人が解いた問題を記録する　
+       int [][] d = new int [n][m];
+       
+       for (int i = 0; i < q; i++){
+           
+           int id = scan.nextInt();
+           
+           if (id == 1){
+               int a = scan.nextInt() - 1;
+               int res = 0;
+               for (int j = 0; j < m; j++) if (d[a][j] == 1) res += (n - c[j]);
+               
+               System.out.println(res);
+           }
+           else{
+               int a = scan.nextInt() - 1;
+               int b = scan.nextInt() - 1;
+               
+               c[b]++;
+               d[a][b] = 1;
+           }
+       }
+    }
+}
