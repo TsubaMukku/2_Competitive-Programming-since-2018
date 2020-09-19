@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        
+        String s = scan.next();
+        String t = scan.next();
+        
+        if (s.equals(t)) System.out.println("same");
+        else if (s.toUpperCase().equals(t.toUpperCase())) System.out.println("case-insensitive");
+        else System.out.println("different");
+    }
+}
+
+// Java
+// 文字列に含まれるすべての文字を大文字にする-> toUpperCase method
+// 文字列に含まれるすべての文字列を小文字にする　-> toLowerCase method
+
+// objectに格納されている文字列が単に同じかどうか調べる
+// -> String classで用意されているequalsメソッドを使う
