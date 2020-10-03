@@ -1,4 +1,15 @@
 /*
+Q:
+Given an n-ary tree, return the postorder traversal of its nodes' values.
+
+Nary-Tree input serialization is represented in their level order traversal, 
+each group of children is separated by the null value (See examples).
+
+
+*/
+
+
+/*
 // Definition for a Node.
 class Node {
 public:
@@ -30,7 +41,7 @@ leafにたどり着いた時：childrenのサイズが0である->valを答え�
 */
 
 
-
+// an iterative solution
 class Solution {
 public:
     vector<int> postorder(Node* root) {
@@ -57,7 +68,7 @@ public:
 };
 
 
-
+// a recursive approach
 class Solution {
 public:
     void solve(Node *root, vector<int> &res){
