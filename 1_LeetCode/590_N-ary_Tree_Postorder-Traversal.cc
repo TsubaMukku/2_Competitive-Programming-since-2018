@@ -18,6 +18,42 @@ public:
 };
 */
 
+/*
+binary treeと同様の発想をする
+左の子　→　右の子　→　親　というルートでたどる
+
+base case:
+leafにたどり着いた時：childrenのサイズが0である->valを答えの配列に格納する.
+
+それぞれのchildをへ潜る(dfsっぽく)
+最後に, 自分のvalを答えの配列に格納する
+*/
+
+class Solution {
+public:
+    void solve(Node *root, vector<int> &res){
+        
+        if (root->children.size() == 0){
+            res.emplace_back(root->val);
+            return;
+        }
+        
+        for (Node *child : root->children){
+            solve(child,res);
+        }
+        res.emplace_back(root->val);
+        return;
+    }
+
+    vector<int> postorder(Node* root) {
+        vector<int> res;
+        if (root==nullptr) return res;
+        
+        solve(root,res);
+        return res;
+    }
+};
+
 class Solution {
 public:
     vector<int> postorder(Node* root) {
