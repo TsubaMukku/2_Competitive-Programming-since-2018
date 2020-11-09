@@ -1,3 +1,39 @@
+
+// 2020-11-09
+
+#include <iostream>
+#include <bits/stdc++.h>
+
+using namespace std;
+const int mod = 1e9+7;
+
+int solve(int m, int n){
+    if (n == 0) return 1;
+    
+    if (n % 2 == 0){
+        return ((long long)solve(m,n/2) * (long long)solve(m,n/2)) % mod;
+    }
+    else{
+        return ( ((long long)solve(m,n/2) * (long long)solve(m,n/2) ) % mod  * m)  % mod;
+    }
+}
+
+int main(void){
+    int m, n;
+    cin >> m >> n;
+    
+    cout << solve(m,n) << endl;
+    return 0;
+    
+}
+
+
+
+
+
+
+
+
 /*
   ポイント: ダブリングを使う: 蟻本にも掲載されているModPow関数を実装すれば良い.
   -> 実際には繰り返し二乗法というアイデアを用いている. 本質はダブリングにある.
