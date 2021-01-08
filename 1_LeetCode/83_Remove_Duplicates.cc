@@ -1,5 +1,38 @@
 
 
+// 2021/01/08
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        
+        // corner case
+        if (head == nullptr) return head;
+        
+        ListNode *tmp = head;
+        
+        while (tmp != nullptr && tmp->next != nullptr){
+            
+            ListNode *go = tmp;
+            
+            if (go->val == go->next->val){
+                while (go->next != nullptr && go->val == go->next->val){
+                    go = go->next;
+                }
+                tmp->next = go->next;
+                tmp = tmp->next;
+            }
+            else{
+                tmp = tmp->next;
+            }
+        }
+        
+        return head;
+    }
+};
+
+
+
+
 // 2021/01/06
 
 /**
