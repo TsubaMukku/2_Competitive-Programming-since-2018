@@ -1,5 +1,32 @@
 
 
+// 2021/01/10
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+        if (head == nullptr) return head;
+        ListNode *sentinel = new ListNode(-1,head);
+        ListNode *pre = sentinel;
+        
+        while (head != nullptr){
+            if (head->next != nullptr && head->val == head->next->val){
+                while(head->next != nullptr && head->val == head->next->val){
+                    head = head->next;
+                }
+                pre->next = head->next;
+            }
+            else{
+                pre = pre->next;
+            }
+            head = head->next;
+        }
+        
+        return sentinel->next;
+    }
+};
+
+
+
 // 2021/01/06
 
 /**
