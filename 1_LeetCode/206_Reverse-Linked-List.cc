@@ -2,6 +2,25 @@
   この問題も, アイデアを知っているか知らないかの勝負である.
 */
 
+// 2021/01/13
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode *pre = nullptr;
+        ListNode *cur = head;
+        
+        while (cur != nullptr){
+            ListNode *tmp = cur->next;
+            
+            cur->next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+        
+        return pre;
+    }
+};
+
 /**
  * Definition for singly-linked list.
  * struct ListNode {
