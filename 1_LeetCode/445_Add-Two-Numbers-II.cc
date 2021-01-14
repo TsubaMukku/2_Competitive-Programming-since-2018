@@ -1,3 +1,84 @@
+
+
+// 2021/01/14
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+private:
+    ListNode *reverseList(ListNode *l){
+        ListNode *pre = nullptr;
+        ListNode *cur = l;
+        
+        while (cur != nullptr){
+            ListNode *tmp = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+        return pre;
+    }
+    
+    
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        l1 = reverseList(l1);
+        l2 = reverseList(l2);
+        
+        int tmp = l1->val + l2->val;
+        l1 = l1->next, l2 = l2->next;
+        int res = tmp / 10;
+        ListNode *ans = new ListNode(tmp%10);
+        ListNode *cur = ans;
+        
+        while (l1!= nullptr && l2 != nullptr){
+            tmp = l1->val + l2->val;
+            l1 = l1->next, l2 = l2->next;
+            tmp += res;
+            
+            cur->next = new ListNode(tmp%10);
+            res = tmp / 10;
+            cur = cur->next;
+        }
+        while(l1!= nullptr){
+            tmp = l1->val;
+            l1 = l1->next;
+            tmp += res;
+            
+            cur->next = new ListNode(tmp%10);
+            res = tmp / 10;
+            cur = cur->next;
+        }
+        while(l2!= nullptr){
+            tmp = l2->val;
+            l2 = l2->next;
+            tmp += res;
+            
+            cur->next = new ListNode(tmp%10);
+            res = tmp / 10;
+            cur = cur->next;
+        }
+        
+        if (res > 0){
+            cur->next = new ListNode(res);
+            cur = cur->next;
+        }
+        
+        ans = reverseList(ans);
+        return ans;
+    }
+};
+
+
+
+
 /*
   solution1: reverse lists -> add two linked list numbers -> reverse the list -> return the list
 */
