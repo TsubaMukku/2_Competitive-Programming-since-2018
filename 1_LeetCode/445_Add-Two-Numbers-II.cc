@@ -11,6 +11,20 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
+// recursive version
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) return head;
+        
+        ListNode *p = reverseList(head->next);
+        head->next->next = head;
+        head->next = nullptr;
+        return p;
+    }
+};
+
 class Solution {
 private:
     ListNode *reverseList(ListNode *l){
