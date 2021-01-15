@@ -1,5 +1,47 @@
 
 
+
+// 2021/01/15
+// do not modify the original list
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        stack<int> s1, s2;
+        while (l1 != nullptr){
+            s1.push(l1->val);
+            l1 = l1->next;
+        }
+        
+        while (l2 != nullptr){
+            s2.push(l2->val);
+            l2 = l2->next;
+        }
+        
+        ListNode *ans = nullptr;
+        int tmp = 0;
+        int res = 0;
+        
+        while (s1.size() || s2.size() || res){
+            tmp = s1.size() ? s1.top() : 0;
+            if (s1.size()) s1.pop();
+            
+            tmp += s2.size() ? s2.top() : 0;
+            if (s2.size()) s2.pop();
+            
+            tmp += res;
+            
+            ListNode *cur = new ListNode(tmp % 10);
+            cur->next = ans;
+            ans = cur;
+            
+            res = tmp / 10;
+        }
+        
+        return ans;
+        
+    }
+};
+
 // 2021/01/14
 /**
  * Definition for singly-linked list.
