@@ -2,6 +2,26 @@
   この問題も, アイデアを知っているか知らないかの勝負である.
 */
 
+// 2021/01/15
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) return head;
+        
+        ListNode *pre = nullptr;
+        ListNode *cur = head;
+        
+        while (cur != nullptr){
+            ListNode *tmp = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = tmp;
+        }
+        
+        return pre;
+    }
+};
+
 // 2021/01/13
 class Solution {
 public:
