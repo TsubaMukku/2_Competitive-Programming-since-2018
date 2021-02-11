@@ -1,4 +1,32 @@
 
+
+// 2021/02/11
+class Solution {
+public:
+    TreeNode* convertBST(TreeNode* root) {
+        int sum = 0;
+        TreeNode *node = root;
+        
+        stack<TreeNode*> st;
+        
+        while (!st.empty() || node != nullptr){
+            
+            while(node != nullptr){
+                st.push(node);
+                node = node->right;
+            }
+            
+            node = st.top();
+            st.pop();
+            sum += node->val;
+            node->val = sum;
+            node = node->left;
+        }
+        
+        return root;
+    } 
+};
+
 // 2021/02/10
 /**
  * Definition for a binary tree node.
