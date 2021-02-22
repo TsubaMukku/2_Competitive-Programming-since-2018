@@ -60,3 +60,12 @@ public:
         return bfs(X,Y,d);
     }
 };
+
+/*
+error message
+=================================================================
+==31==ERROR: AddressSanitizer: allocator is out of memory trying to allocate 0xee6b2820 bytes
+    #5 0x7f43da4e80b2  (/lib/x86_64-linux-gnu/libc.so.6+0x270b2)
+==31==HINT: if you don't care about these errors you may set allocator_may_return_null=1
+==31==ABORTING
+*/
