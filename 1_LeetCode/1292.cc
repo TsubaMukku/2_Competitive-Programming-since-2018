@@ -1,6 +1,13 @@
 
 
 // 2021/02/24
+
+/*
+Given a m x n matrix mat and an integer threshold. Return the maximum side-length of a square with a sum less than or equal to threshold 
+or return 0 if there is no such square.
+https://leetcode.com/problems/maximum-side-length-of-a-square-with-sum-less-than-or-equal-to-threshold/
+
+*/
 class Solution {
 private:
     int rangeSum(int x, int y, int z, int w, vector<vector<int>> &S){
